@@ -1,0 +1,32 @@
+# Environment & Secrets
+.mcp.json
+.env
+.env.local
+*.key
+*.pem
+
+# Python cache & artifacts
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.pytest_cache/
+
+# Backups & Archives
+*.bak
+*.tmp
+*.zip
+.thumbnail
+
+# Unused clipboard dumps
+uploads/
+image.png
+image copy*.png
+
+# Operating System & Editor
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/
+*.log

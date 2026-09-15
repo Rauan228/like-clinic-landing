@@ -1,0 +1,1495 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Like Clinic — Стоматология полного цикла в Алматы 24/7</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
+<link href="https://fonts.googleapis.com/css2?family=Onest:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --bg: #EAEDEC;
+    --card: #FFFFFF;
+    --ink: #14201E;
+    --muted: #5C716D;
+    --faint: #A9B8B4;
+    --line: #DCE3E1;
+    --teal: #0D7F75;
+    --teal-dark: #0A6159;
+    --teal-bright: #16A79A;
+    --teal-soft: rgba(13, 127, 117, 0.08);
+    --teal-glow: rgba(13, 127, 117, 0.22);
+    --dark: #1A2A28;
+    --dark-2: #22332F;
+    --dark-card: #203330;
+    --on-dark-faint: #7E9994;
+    --r-card: 20px;
+    --r-block: 36px;
+    --ease: cubic-bezier(.22,.61,.36,1);
+    --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    font-family: 'Onest', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+    font-size: 16px; line-height: 1.6; font-weight: 400;
+    background: var(--bg); color: var(--ink);
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+  img { max-width: 100%; display: block; }
+  a { color: var(--teal-dark); text-decoration: none; }
+  input, select, button, textarea { font-family: inherit; font-size: 16px; }
+  a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible {
+    outline: 2px solid var(--teal); outline-offset: 3px; border-radius: 6px;
+  }
+
+  /* ---------- типографика: крупно и легко ---------- */
+  .h1 { font-size: clamp(34px, 5.2vw, 62px); font-weight: 400; line-height: 1.08; letter-spacing: -0.025em; margin: 0; }
+  .h2 { font-size: clamp(26px, 3.6vw, 44px); font-weight: 400; line-height: 1.14; letter-spacing: -0.02em; margin: 0; }
+  .h3 { font-size: clamp(18px, 1.5vw, 22px); font-weight: 500; line-height: 1.3; letter-spacing: -0.01em; margin: 0; }
+  .dim { color: var(--faint); }
+  .dim-d { color: var(--on-dark-faint); }
+  .lead { font-size: clamp(15.5px, 1.3vw, 18px); line-height: 1.62; color: var(--muted); margin: 0; }
+  .sm { font-size: 14.5px; line-height: 1.58; color: var(--muted); margin: 0; }
+
+  .wrap { max-width: 1240px; margin: 0 auto; padding-left: 24px; padding-right: 24px; }
+  .sec { padding-top: clamp(56px, 7.5vw, 120px); }
+
+  /* ---------- кнопки с микро-интерактивностью ---------- */
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+    min-height: 52px; padding: 14px 28px; border-radius: 999px;
+    font-size: 15.5px; font-weight: 500; border: 1px solid transparent;
+    cursor: pointer; position: relative; overflow: hidden;
+    transition: background .25s var(--ease), color .25s var(--ease), border-color .25s var(--ease), transform .18s var(--ease), box-shadow .25s var(--ease);
+  }
+  .btn:active { transform: scale(0.975); }
+  .btn-primary {
+    background: var(--teal); color: #fff;
+    box-shadow: 0 8px 24px -6px var(--teal-glow);
+  }
+  .btn-primary:hover {
+    background: var(--teal-dark); color: #fff;
+    box-shadow: 0 12px 28px -6px var(--teal-glow);
+    transform: translateY(-1px);
+  }
+  .btn-primary::after {
+    content: ''; position: absolute; top: -50%; left: -60%; width: 40%; height: 200%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transform: rotate(25deg); animation: btn-shimmer 7s ease-in-out infinite;
+  }
+  @keyframes btn-shimmer {
+    0%, 82% { transform: translateX(0) rotate(25deg); opacity: 0; }
+    85% { opacity: 1; }
+    100% { transform: translateX(420%) rotate(25deg); opacity: 0; }
+  }
+  .btn-light { background: #fff; color: var(--ink); border: 1px solid var(--line); }
+  .btn-light:hover { background: #D9EFEC; border-color: rgba(13,127,117,0.3); color: var(--teal-dark); transform: translateY(-1px); }
+  .btn-ghost-d { border-color: rgba(255,255,255,.28); color: #fff; background: rgba(255,255,255,.05); }
+  .btn-ghost-d:hover { background: rgba(255,255,255,.14); color: #fff; transform: translateY(-1px); }
+  .btn-sm { min-height: 42px; padding: 10px 20px; font-size: 14.5px; }
+
+  /* ---------- шапка (sticky & blur) ---------- */
+  .hdr {
+    position: sticky; top: 0; z-index: 80;
+    background: rgba(234,237,236,.88); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid rgba(20,32,30,.07);
+    transition: box-shadow .3s var(--ease), background .3s var(--ease);
+  }
+  .hdr.is-scrolled {
+    background: rgba(234,237,236,.96);
+    box-shadow: 0 10px 28px -10px rgba(16,36,32,.08);
+  }
+  .hdr-in { display: flex; align-items: center; justify-content: space-between; gap: 20px; padding-top: 12px; padding-bottom: 12px; }
+  .nav-a {
+    font-size: 15px; color: #2C403C; position: relative; padding: 6px 0;
+    transition: color .2s var(--ease);
+  }
+  .nav-a::after {
+    content: ''; position: absolute; left: 0; right: 100%; bottom: 2px; height: 1.5px;
+    background: var(--teal); transition: right .3s var(--ease);
+  }
+  .nav-a:hover { color: var(--teal-dark); }
+  .nav-a:hover::after { right: 0; }
+
+  /* Гамбургер кнопка для мобильных */
+  .burger-btn {
+    display: none; align-items: center; justify-content: center;
+    width: 44px; height: 44px; border-radius: 12px;
+    background: #fff; border: 1px solid var(--line);
+    cursor: pointer; color: var(--ink); padding: 0;
+    transition: background .2s var(--ease), border-color .2s var(--ease);
+  }
+  .burger-btn:active { transform: scale(0.94); background: #E4ECEB; }
+
+  /* Мобильное меню Drawer */
+  .mob-drawer {
+    position: fixed; inset: 0; z-index: 100;
+    background: rgba(20,32,30,.6); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+    display: flex; flex-direction: column; justify-content: flex-end;
+    opacity: 0; pointer-events: none; transition: opacity .3s var(--ease);
+  }
+  .mob-drawer.open { opacity: 1; pointer-events: auto; }
+  .mob-drawer-panel {
+    background: #FFFFFF; border-radius: 28px 28px 0 0;
+    padding: 24px 22px calc(28px + env(safe-area-inset-bottom));
+    max-height: 88vh; overflow-y: auto;
+    transform: translateY(100%); transition: transform .35s var(--ease-out);
+    box-shadow: 0 -20px 40px rgba(0,0,0,0.15);
+  }
+  .mob-drawer.open .mob-drawer-panel { transform: translateY(0); }
+  .mob-drawer-head {
+    display: flex; align-items: center; justify-content: space-between;
+    padding-bottom: 18px; border-bottom: 1px solid var(--line); margin-bottom: 18px;
+  }
+  .mob-nav-list { display: flex; flex-direction: column; gap: 4px; margin-bottom: 22px; }
+  .mob-nav-item {
+    display: flex; align-items: center; justify-content: space-between; gap: 12px;
+    padding: 13px 14px; border-radius: 14px; font-size: 16px; font-weight: 500;
+    color: var(--ink); transition: background .2s var(--ease);
+  }
+  .mob-nav-item:active, .mob-nav-item:hover { background: var(--bg); color: var(--teal-dark); }
+  .mob-nav-label { display: flex; align-items: center; gap: 10px; }
+  .mob-nav-item span.num { font-size: 12.5px; color: var(--faint); font-weight: 400; }
+
+  /* ---------- индикатор пульса 24/7 (Live) ---------- */
+  .dot-pulse-wrap {
+    display: inline-flex; align-items: center; justify-content: center;
+    position: relative; width: 14px; height: 14px; flex-shrink: 0;
+  }
+  .dot-core {
+    width: 8px; height: 8px; border-radius: 50%; background: var(--teal-bright);
+    position: relative; z-index: 2;
+  }
+  .dot-ring {
+    position: absolute; inset: 0; border-radius: 50%;
+    border: 1.5px solid var(--teal-bright);
+    animation: radar-pulse 2.2s cubic-bezier(0.24, 0, 0.38, 1) infinite;
+  }
+  @keyframes radar-pulse {
+    0% { transform: scale(0.6); opacity: 1; }
+    75% { transform: scale(2.4); opacity: 0; }
+    100% { transform: scale(2.4); opacity: 0; }
+  }
+
+  /* ---------- hero section ---------- */
+  .hero {
+    position: relative; overflow: hidden; display: flex; align-items: center;
+    min-height: 640px; padding-top: clamp(36px, 5vw, 68px); padding-bottom: clamp(48px, 6vw, 84px);
+  }
+  .hero-media {
+    position: absolute; inset: 0; z-index: 1; overflow: hidden;
+  }
+  .hero-media img {
+    width: 100%; height: 100%; object-fit: cover; object-position: right center;
+    transition: transform 1.2s var(--ease);
+  }
+  .hero-inner { position: relative; z-index: 5; width: 100%; }
+  .hero-inner > * { max-width: 530px; }
+  .hero-eyebrow {
+    display: inline-flex; align-items: center; gap: 10px; max-width: 480px;
+    font-size: 14.5px; color: var(--muted);
+    padding: 8px 16px; background: rgba(255,255,255,0.78); backdrop-filter: blur(8px);
+    border: 1px solid rgba(220,227,225,0.8); border-radius: 999px;
+    margin-bottom: 22px;
+  }
+  .hero-chips {
+    display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 24px;
+  }
+  .chip {
+    display: inline-flex; align-items: center; gap: 7px;
+    font-size: 13.5px; font-weight: 500; color: #233834;
+    background: rgba(255,255,255,.85); border: 1px solid var(--line);
+    padding: 6px 13px; border-radius: 999px;
+    backdrop-filter: blur(6px); transition: transform .2s var(--ease);
+  }
+  .chip:hover { transform: translateY(-1px); border-color: var(--teal); }
+
+  .hero-price {
+    display: inline-flex; flex-wrap: wrap; align-items: baseline; gap: 4px 14px;
+    background: #fff; border: 1px solid var(--line); border-radius: 18px; padding: 14px 20px;
+    box-shadow: 0 12px 30px -10px rgba(16,40,36,.07);
+    transition: transform .3s var(--ease), box-shadow .3s var(--ease);
+  }
+  .hero-price:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 16px 36px -8px rgba(16,40,36,.12);
+  }
+
+  /* ---------- сетка bento ---------- */
+  .bento { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+  .b-photo {
+    position: relative; border-radius: var(--r-card); overflow: hidden; min-height: 230px;
+    border: 1px solid var(--line);
+  }
+  .b-photo img {
+    width: 100%; height: 100%; object-fit: cover; position: absolute; inset: 0;
+    transition: transform .7s var(--ease);
+  }
+  .b-photo:hover img { transform: scale(1.04); }
+  .b-photo span {
+    position: absolute; left: 20px; right: 20px; bottom: 18px; z-index: 2;
+    color: #fff; font-size: 15px; font-weight: 500; text-shadow: 0 1px 12px rgba(0,0,0,.6);
+  }
+  .b-photo::after {
+    content: ''; position: absolute; inset: 0; z-index: 1;
+    background: linear-gradient(to top, rgba(10,22,20,.68), rgba(10,22,20,0) 55%);
+  }
+  .b-card {
+    background: var(--card); border-radius: var(--r-card); padding: 24px;
+    display: flex; flex-direction: column; gap: 10px; border: 1px solid var(--line);
+    transition: transform .3s var(--ease), box-shadow .3s var(--ease);
+  }
+  .b-card:hover { transform: translateY(-3px); box-shadow: 0 14px 32px rgba(16,40,36,.06); }
+  .span2 { grid-column: span 2; }
+  .row2 { grid-row: span 2; }
+
+  /* ---------- табы категорий услуг ---------- */
+  .tabs-wrap {
+    display: flex; gap: 8px; overflow-x: auto; padding-bottom: 6px; margin-bottom: 24px;
+    scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch;
+  }
+  .tabs-wrap::-webkit-scrollbar { display: none; }
+  .tab-btn {
+    flex-shrink: 0; scroll-snap-align: start;
+    display: inline-flex; align-items: center; gap: 7px;
+    padding: 10px 18px; border-radius: 999px; font-size: 14.5px; font-weight: 500;
+    background: #fff; border: 1px solid var(--line); color: var(--ink);
+    cursor: pointer; transition: all .2s var(--ease);
+  }
+  .tab-btn:hover { border-color: var(--teal); color: var(--teal-dark); }
+  .tab-btn.active {
+    background: var(--teal); color: #fff; border-color: var(--teal);
+    box-shadow: 0 4px 16px var(--teal-glow);
+  }
+
+  /* ---------- карточки направлений ---------- */
+  .svc {
+    position: relative; overflow: hidden; background: var(--card); border-radius: var(--r-card);
+    padding: 26px; display: flex; flex-direction: column; gap: 10px; border: 1px solid var(--line);
+    transition: transform .3s var(--ease), box-shadow .3s var(--ease), border-color .3s var(--ease);
+    text-decoration: none; color: inherit;
+  }
+  .svc:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 18px 40px -8px rgba(16,40,36,.1);
+    border-color: rgba(13,127,117,0.35);
+  }
+  .svc:active { transform: scale(0.985); }
+  .svc-mark {
+    position: absolute; right: -8px; bottom: -14px; z-index: 0; pointer-events: none;
+    font-size: clamp(52px, 6vw, 92px); font-weight: 600; letter-spacing: -0.04em;
+    color: rgba(20,32,30,.04); white-space: nowrap; line-height: 1; user-select: none;
+  }
+  .svc > *:not(.svc-mark) { position: relative; z-index: 1; }
+  .svc-cat {
+    font-size: 13.5px; color: var(--faint); font-weight: 500;
+    display: inline-flex; align-items: center; gap: 6px;
+  }
+  .svc-price { font-size: 24px; font-weight: 600; letter-spacing: -0.02em; color: var(--teal-dark); }
+  .arrow { display: inline-flex; align-items: center; gap: 8px; font-size: 15px; color: var(--teal-dark); font-weight: 500; }
+  .arrow svg { transition: transform .25s var(--ease); }
+  .svc:hover .arrow svg { transform: translateX(5px); }
+
+  /* Промо карточки (импланты, чистка) */
+  .svc-promo {
+    border-color: rgba(13,127,117,0.3);
+    background: linear-gradient(175deg, #FFFFFF 0%, #F5FAF9 100%);
+  }
+  .promo-tag {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: #E4F4F1; color: var(--teal-dark);
+    padding: 4px 10px; border-radius: 999px; font-size: 12.5px; font-weight: 600;
+  }
+
+  /* ---------- тёмные блоки ---------- */
+  .dark { background: var(--dark); color: #fff; border-radius: var(--r-block); overflow: hidden; }
+  .stat-row { display: grid; grid-template-columns: repeat(4, 1fr); }
+  .stat { padding: 12px 24px; border-left: 1px solid rgba(255,255,255,.14); }
+  .stat:first-child { border-left: 0; padding-left: 0; }
+  .stat-n { font-size: clamp(34px, 4vw, 54px); font-weight: 300; line-height: 1.05; letter-spacing: -0.03em; color: #fff; }
+  .stat-t { font-size: 14px; color: var(--on-dark-faint); margin-top: 6px; line-height: 1.4; }
+
+  /* ---------- список преимуществ ---------- */
+  .rows { display: grid; }
+  .row {
+    display: grid; grid-template-columns: 1fr 1.3fr; gap: 16px 36px; padding: 22px 0;
+    border-top: 1px solid rgba(255,255,255,.14); align-items: start;
+    transition: background .2s var(--ease);
+  }
+  .row:last-child { border-bottom: 1px solid rgba(255,255,255,.14); }
+  .row-t { display: flex; align-items: baseline; gap: 11px; font-size: clamp(16.5px,1.4vw,19px); font-weight: 400; color: #fff; }
+  .row-d { font-size: 14.8px; line-height: 1.6; color: var(--on-dark-faint); }
+
+  /* ---------- врачи ---------- */
+  .doc {
+    position: relative; border-radius: var(--r-card); overflow: hidden;
+    background: var(--card); display: flex; flex-direction: column;
+    border: 1px solid var(--line);
+    transition: transform .35s var(--ease), box-shadow .35s var(--ease);
+  }
+  .doc:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 18px 40px -10px rgba(16,40,36,.1);
+  }
+  .doc-img-wrap { position: relative; width: 100%; aspect-ratio: 3/4; overflow: hidden; background: #E0E7E5; }
+  .doc-img-wrap img {
+    width: 100%; height: 100%; object-fit: cover; object-position: center 25%;
+    transition: transform .7s var(--ease);
+  }
+  .doc:hover .doc-img-wrap img { transform: scale(1.04); }
+  .doc-badge {
+    position: absolute; top: 14px; left: 14px; z-index: 2;
+    background: rgba(26,42,40,0.85); backdrop-filter: blur(8px);
+    color: #fff; font-size: 12.5px; font-weight: 500;
+    padding: 5px 12px; border-radius: 999px;
+  }
+  .doc-body { padding: 20px; display: flex; flex-direction: column; flex: 1; }
+  .doc-exp {
+    margin-top: auto; padding-top: 14px; border-top: 1px solid var(--line);
+    font-size: 14px; color: var(--teal-dark); font-weight: 500;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+
+  /* ---------- шаги ---------- */
+  .step {
+    padding: 24px 0; border-top: 1px solid var(--line);
+    display: grid; grid-template-columns: 56px 1fr 1.3fr; gap: 16px 30px; align-items: start;
+  }
+  .step:last-child { border-bottom: 1px solid var(--line); }
+  .step-n {
+    font-size: 14px; font-weight: 600; color: var(--teal);
+    background: #E8F4F2; width: 38px; height: 38px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+  }
+
+  /* ---------- отзывы (rail с кнопками) ---------- */
+  .rail-controls {
+    display: flex; align-items: center; gap: 10px; margin-left: auto;
+  }
+  .ctrl-btn {
+    width: 42px; height: 42px; border-radius: 50%; background: #fff; border: 1px solid var(--line);
+    display: flex; align-items: center; justify-content: center; color: var(--ink);
+    cursor: pointer; transition: all .2s var(--ease);
+  }
+  .ctrl-btn:hover { background: var(--teal); color: #fff; border-color: var(--teal); }
+  .ctrl-btn:active { transform: scale(0.92); }
+
+  .rail {
+    display: flex; gap: 16px; overflow-x: auto; scroll-snap-type: x mandatory;
+    padding-bottom: 12px; -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+  }
+  .rail::-webkit-scrollbar { height: 4px; }
+  .rail::-webkit-scrollbar-thumb { background: #C4D0CD; border-radius: 99px; }
+  .rail::-webkit-scrollbar-track { background: transparent; }
+
+  .rev {
+    flex: 0 0 min(86vw, 360px); scroll-snap-align: start;
+    background: var(--card); border-radius: var(--r-card); padding: 26px;
+    display: flex; flex-direction: column; gap: 14px; border: 1px solid var(--line);
+    transition: transform .3s var(--ease), box-shadow .3s var(--ease);
+  }
+  .rev:hover { transform: translateY(-3px); box-shadow: 0 14px 32px rgba(16,40,36,.06); }
+  .rev-head { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+  .rev-badge { font-size: 12px; color: var(--teal-dark); background: #E6F3F1; padding: 3px 9px; border-radius: 999px; font-weight: 500; }
+  .quote { font-size: 32px; line-height: .8; color: #CBD8D5; font-weight: 600; }
+
+  /* ---------- FAQ аккордеон ---------- */
+  .faq-list { display: flex; flex-direction: column; gap: 12px; }
+  .faq-item {
+    background: var(--card); border-radius: 18px; border: 1px solid var(--line);
+    overflow: hidden; transition: border-color .25s var(--ease), box-shadow .25s var(--ease);
+  }
+  .faq-item[open] {
+    border-color: var(--teal);
+    box-shadow: 0 10px 28px -6px rgba(13,127,117,0.1);
+  }
+  .faq-sum {
+    display: flex; align-items: center; justify-content: space-between; gap: 16px;
+    padding: 20px 22px; cursor: pointer; list-style: none;
+    font-size: 16.5px; font-weight: 500; color: var(--ink); user-select: none;
+  }
+  .faq-sum::-webkit-details-marker { display: none; }
+  .faq-chevron {
+    width: 28px; height: 28px; border-radius: 50%; background: var(--bg);
+    display: flex; align-items: center; justify-content: center; color: var(--teal-dark);
+    flex-shrink: 0; transition: transform .3s var(--ease), background .3s var(--ease), color .3s var(--ease);
+  }
+  .faq-item[open] .faq-chevron {
+    transform: rotate(180deg);
+    background: var(--teal); color: #fff;
+  }
+  .faq-body {
+    padding: 0 22px 22px; font-size: 15px; line-height: 1.62; color: var(--muted);
+  }
+
+  /* ---------- форма ---------- */
+  .field { display: flex; flex-direction: column; gap: 6px; }
+  .field span { font-size: 14px; font-weight: 500; color: #2C403C; }
+  .field input, .field select {
+    min-height: 52px; padding: 14px 16px; border-radius: 12px;
+    border: 1px solid var(--line); background: #fff; color: var(--ink); outline: none;
+    transition: border-color .2s var(--ease), box-shadow .2s var(--ease);
+  }
+  .field input:focus, .field select:focus {
+    border-color: var(--teal);
+    box-shadow: 0 0 0 3px rgba(13,127,117,0.12);
+  }
+
+  .slot-pills { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 4px; }
+  .slot-pill {
+    padding: 7px 12px; border-radius: 999px; font-size: 13px; font-weight: 500;
+    border: 1px solid var(--line); background: #F4F7F6; color: var(--ink); cursor: pointer;
+    transition: all .2s var(--ease);
+  }
+  .slot-pill:hover { border-color: var(--teal); color: var(--teal-dark); }
+  .slot-pill.active { background: var(--teal); color: #fff; border-color: var(--teal); }
+
+  /* ---------- карта ---------- */
+  .map-card {
+    border-radius: var(--r-card); border: 1px solid var(--line); background: #DFE5E3;
+    overflow: hidden; display: flex; flex-direction: column; min-height: 340px;
+  }
+  .map-card iframe { width: 100%; flex: 1; min-height: 270px; border: 0; display: block; }
+  .map-foot {
+    display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between;
+    gap: 6px 18px; padding: 14px 18px; background: #fff; border-top: 1px solid var(--line);
+  }
+
+  /* ---------- футер ---------- */
+  .foot-mark {
+    font-size: clamp(60px, 13vw, 180px); font-weight: 600; letter-spacing: -0.05em; line-height: .85;
+    color: rgba(255,255,255,.04); white-space: nowrap; user-select: none; margin-top: 24px;
+  }
+
+  /* ---------- мобильный плавающий бар (Sticky Bar) ---------- */
+  .mob-bar {
+    position: fixed; bottom: 12px; left: 14px; right: 14px; z-index: 70;
+    background: rgba(20, 34, 32, 0.94); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+    border: 1px solid rgba(255,255,255,0.14); border-radius: 20px;
+    padding: 9px 12px calc(9px + env(safe-area-inset-bottom));
+    display: flex; align-items: center; gap: 8px;
+    box-shadow: 0 14px 34px -4px rgba(0,0,0,0.35);
+    animation: slide-up-bar .4s var(--ease-out);
+  }
+  @keyframes slide-up-bar {
+    from { transform: translateY(120%); }
+    to { transform: translateY(0); }
+  }
+  .mob-bar-btn {
+    flex: 1; display: flex; align-items: center; justify-content: center; gap: 7px;
+    min-height: 44px; padding: 8px 10px; border-radius: 12px;
+    font-size: 14px; font-weight: 500; text-decoration: none; cursor: pointer;
+    transition: transform .15s var(--ease), background .2s var(--ease);
+  }
+  .mob-bar-btn:active { transform: scale(0.96); }
+  .mob-bar-primary { background: var(--teal); color: #fff; }
+  .mob-bar-wa { background: #25D366; color: #fff; }
+  .mob-bar-ghost { background: rgba(255,255,255,0.12); color: #fff; }
+
+  /* ---------- анимации появления ---------- */
+  [data-anim] { opacity: 0; transform: translateY(22px); }
+  .anim-on [data-anim] {
+    transition: opacity .65s var(--ease-out), transform .65s var(--ease-out);
+  }
+  [data-anim].seen { opacity: 1; transform: none; }
+
+  /* ---------- адаптив под мобильные устройства ---------- */
+  @media (max-width: 1040px) {
+    :root { --r-block: 28px; --r-card: 18px; }
+    .burger-btn { display: flex; }
+    .nav-desktop { display: none !important; }
+
+    .hero {
+      display: flex; flex-direction: column; min-height: 0;
+      padding-top: 24px; padding-bottom: 40px;
+    }
+    .hero-inner { order: 1; }
+    .hero-inner > * { max-width: none; }
+    .hero-media {
+      order: 2; position: relative; inset: auto; width: 100%;
+      margin: 24px 0 0; aspect-ratio: 16/10; max-height: 300px;
+      border-radius: var(--r-block); box-shadow: 0 16px 36px -10px rgba(16,40,36,.14);
+    }
+    .hero-media-tag {
+      position: absolute; bottom: 14px; left: 16px; z-index: 3;
+      background: rgba(26,42,40,.82); backdrop-filter: blur(8px);
+      color: #fff; font-size: 13px; font-weight: 500;
+      padding: 6px 14px; border-radius: 999px;
+    }
+    .hero-price { width: 100%; }
+
+    .bento { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+    .row { grid-template-columns: 1fr; gap: 8px; }
+    .step { grid-template-columns: 44px 1fr; gap: 12px 18px; }
+    .step > :last-child { grid-column: 2; }
+    .wrap { padding-left: 18px; padding-right: 18px; }
+    .stat-row { grid-template-columns: repeat(2, 1fr); gap: 16px 0; }
+    .stat:nth-child(3) { border-left: 0; padding-left: 0; }
+  }
+
+  @media (max-width: 640px) {
+    :root { --r-block: 24px; --r-card: 16px; }
+    body { padding-bottom: 80px; }
+
+    .h1 { font-size: 32px; line-height: 1.1; }
+    .h2 { font-size: 25px; line-height: 1.15; }
+    .hero-eyebrow { font-size: 13px; padding: 6px 12px; }
+    .btn { width: 100%; min-height: 50px; }
+
+    .bento { grid-template-columns: 1fr; }
+    .span2, .row2 { grid-column: auto; grid-row: auto; }
+    .b-photo { min-height: 200px; }
+
+    .stat-row { grid-template-columns: 1fr; gap: 12px; }
+    .stat { border-left: 0; border-top: 1px solid rgba(255,255,255,.14); padding: 14px 0 0; }
+    .stat:first-child { border-top: 0; padding-top: 0; }
+
+    .faq-sum { padding: 16px 18px; font-size: 15.5px; }
+    .faq-body { padding: 0 18px 18px; font-size: 14.5px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    [data-anim] { opacity: 1 !important; transform: none !important; }
+    .dot-ring { animation: none !important; }
+    .btn-primary::after { animation: none !important; }
+    * { transition-duration: .01ms !important; animation-duration: .01ms !important; }
+  }
+</style>
+</helmet>
+
+<div style="width:100%; overflow-x:hidden">
+
+  <!-- Шапка сайта -->
+  <header class="{{ hdrClass }}">
+    <div class="wrap hdr-in">
+      <a href="#top" style="display:flex; align-items:center; gap:11px; flex:0 0 auto">
+        <img src="assets/logo.png" alt="Like Clinic" width="42" height="42" style="width:42px; height:42px; border-radius:11px; object-fit:contain" />
+        <span style="display:flex; flex-direction:column; line-height:1.2">
+          <span style="font-size:17px; font-weight:600; letter-spacing:-.015em; color:var(--ink)">Like Clinic</span>
+          <span style="font-size:12px; color:var(--muted)">Стоматология · Алматы</span>
+        </span>
+      </a>
+
+      <!-- Десктопная навигация -->
+      <nav class="nav-desktop" style="display:flex; gap:26px; align-items:center">
+        <a class="nav-a" href="#about">О клинике</a>
+        <a class="nav-a" href="#services">Услуги и цены</a>
+        <a class="nav-a" href="#why">Преимущества</a>
+        <a class="nav-a" href="#doctors">Врачи</a>
+        <a class="nav-a" href="#steps">Приём</a>
+        <a class="nav-a" href="#reviews">Отзывы</a>
+        <a class="nav-a" href="#faq">FAQ</a>
+        <a class="nav-a" href="#contacts">Контакты</a>
+      </nav>
+
+      <!-- Десктопный правый блок -->
+      <div style="display:flex; align-items:center; gap:14px">
+        <a href="tel:+77073606049" style="font-size:15px; font-weight:500; color:var(--ink); white-space:nowrap; display:flex; align-items:center; gap:7px">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          +7 707 360 6049
+        </a>
+        <a class="btn btn-primary btn-sm nav-desktop" href="#form">Записаться</a>
+
+        <!-- Мобильная кнопка меню (гамбургер) -->
+        <button class="burger-btn" onClick="{{ onToggleMenu }}" aria-label="Открыть мобильное меню">
+          <sc-if value="{{ notMenuOpen }}">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+          </sc-if>
+          <sc-if value="{{ menuOpen }}">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+          </sc-if>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Мобильный выезжающий Drawer (меню) -->
+  <div class="{{ drawerClass }}" onClick="{{ onCloseMenu }}">
+    <div class="mob-drawer-panel" onClick="{{ onStopProp }}">
+      <div class="mob-drawer-head">
+        <div style="display:flex; align-items:center; gap:10px">
+          <img src="assets/logo.png" alt="Like Clinic" width="34" height="34" style="width:34px; height:34px; border-radius:9px" />
+          <span style="font-size:16px; font-weight:600">Like Clinic · Алматы</span>
+        </div>
+        <button style="border:0; background:none; padding:6px; cursor:pointer; color:var(--muted)" onClick="{{ onCloseMenu }}" aria-label="Закрыть меню">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+        </button>
+      </div>
+
+      <div style="display:flex; align-items:center; gap:9px; background:#EBF4F2; padding:10px 14px; border-radius:12px; margin-bottom:18px">
+        <span class="dot-pulse-wrap"><span class="dot-core"></span><span class="dot-ring"></span></span>
+        <span style="font-size:13.5px; color:var(--teal-dark); font-weight:500">Открыто сейчас · Круглосуточно 24/7</span>
+      </div>
+
+      <div class="mob-nav-list">
+        <a class="mob-nav-item" href="#about" onClick="{{ onCloseMenu }}">
+          <span class="mob-nav-label">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+            О клинике
+          </span>
+          <span class="num">01</span>
+        </a>
+        <a class="mob-nav-item" href="#services" onClick="{{ onCloseMenu }}">
+          <span class="mob-nav-label">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 3C4.5 3 3 5 3 8c0 3.5 1.5 6 3 13 1 0 2-3 3-5 1 2 2 5 3 5 1.5-7 3-9.5 3-13 0-3-1.5-5-4-5-1.5 0-2.5.8-3 1.8-.5-1-1.5-1.8-3-1.8z"/></svg>
+            Услуги и цены
+          </span>
+          <span class="num">02</span>
+        </a>
+        <a class="mob-nav-item" href="#why" onClick="{{ onCloseMenu }}">
+          <span class="mob-nav-label">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            Преимущества
+          </span>
+          <span class="num">03</span>
+        </a>
+        <a class="mob-nav-item" href="#doctors" onClick="{{ onCloseMenu }}">
+          <span class="mob-nav-label">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><line x1="19" x2="19" y1="8" y2="14"/><line x1="22" x2="16" y1="11" y2="11"/></svg>
+            Наши врачи
+          </span>
+          <span class="num">04</span>
+        </a>
+        <a class="mob-nav-item" href="#steps" onClick="{{ onCloseMenu }}">
+          <span class="mob-nav-label">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            Как проходит приём
+          </span>
+          <span class="num">05</span>
+        </a>
+        <a class="mob-nav-item" href="#reviews" onClick="{{ onCloseMenu }}">
+          <span class="mob-nav-label">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            Отзывы пациентов
+          </span>
+          <span class="num">06</span>
+        </a>
+        <a class="mob-nav-item" href="#faq" onClick="{{ onCloseMenu }}">
+          <span class="mob-nav-label">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" x2="12.01" y1="17" y2="17"/></svg>
+            Вопросы и ответы
+          </span>
+          <span class="num">07</span>
+        </a>
+        <a class="mob-nav-item" href="#contacts" onClick="{{ onCloseMenu }}">
+          <span class="mob-nav-label">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+            Контакты и карта
+          </span>
+          <span class="num">08</span>
+        </a>
+      </div>
+
+      <div style="display:flex; flex-direction:column; gap:10px">
+        <a class="btn btn-primary" href="#form" onClick="{{ onCloseMenu }}" style="width:100%">Записаться на бесплатный осмотр</a>
+        <a class="btn btn-light" href="https://wa.me/77073606049" style="width:100%">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-12.4 7.4L3 20.5l1.7-5.4A8.4 8.4 0 1 1 21 11.5Z"/></svg>
+          Написать в WhatsApp
+        </a>
+      </div>
+
+      <div style="margin-top:18px; text-align:center; font-size:13px; color:var(--muted)">
+        ул. Гоголя 20 · ЖК Central Park Residence, 2 этаж
+      </div>
+    </div>
+  </div>
+
+  <!-- Hero секция -->
+  <section id="top" class="hero">
+    <div class="hero-media">
+      <img src="assets/hero-clinic.jpg" alt="Вход в клинику Like Clinic на Гоголя 20" />
+      <div class="hero-media-tag">Гоголя 20 · ЖК Central Park Residence</div>
+    </div>
+    <div class="wrap hero-inner">
+      <div data-anim="" class="hero-eyebrow">
+        <span class="dot-pulse-wrap"><span class="dot-core"></span><span class="dot-ring"></span></span>
+        <span>Круглосуточно 24/7 · приём без выходных</span>
+      </div>
+      <h1 data-anim="" class="h1" style="margin:0 0 16px">
+        Стоматология<br />
+        <span style="color:var(--teal)">полного цикла</span><br />
+        <span class="dim">в центре Алматы</span>
+      </h1>
+      <p data-anim="" class="lead" style="max-width:460px; margin-bottom:20px">
+        Имплантация, коронки, брекеты и лечение без боли. Дежурный врач готов принять в любое время суток. Рассрочка Kaspi 0-0-12 и бесплатный осмотр.
+      </p>
+
+      <!-- Быстрые плашки преимуществ -->
+      <div data-anim="" class="hero-chips">
+        <span class="chip">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+          Рассрочка Kaspi 0-0-12
+        </span>
+        <span class="chip">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+          Консультация 0 ₸
+        </span>
+        <span class="chip">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+          Врачи со стажем 10+ лет
+        </span>
+      </div>
+
+      <!-- Кнопки действий -->
+      <div data-anim="" style="display:flex; flex-wrap:wrap; gap:12px; margin-bottom:24px">
+        <a class="btn btn-primary" href="#form">Записаться на консультацию</a>
+        <a class="btn btn-light" href="https://wa.me/77073606049">
+          <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-12.4 7.4L3 20.5l1.7-5.4A8.4 8.4 0 1 1 21 11.5Z"/></svg>
+          WhatsApp 24/7
+        </a>
+      </div>
+
+      <!-- Плашка акции месяца -->
+      <a data-anim="" href="#services" class="hero-price" data-service-name="Имплантация">
+        <div style="width:100%; display:flex; align-items:center; justify-content:space-between; gap:10px; margin-bottom:4px">
+          <span class="promo-tag">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg>
+            Акция месяца
+          </span>
+          <span style="font-size:12.5px; color:var(--teal-dark); font-weight:500">Kaspi 0-0-12</span>
+        </div>
+        <span class="sm" style="width:100%; font-size:14.5px; color:var(--ink); font-weight:500">Зубной имплант под ключ</span>
+        <span style="font-size:24px; font-weight:600; color:var(--teal-dark); letter-spacing:-.02em">130 000 ₸</span>
+        <span style="font-size:15px; color:var(--faint); text-decoration:line-through">150 000 ₸</span>
+        <span style="font-size:12.5px; color:var(--muted); width:100%">или ~10 833 ₸/мес без переплат</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- О клинике (Bento Grid) -->
+  <section id="about" class="sec">
+    <div class="wrap">
+      <h2 data-anim="" class="h2" style="margin-bottom:16px">О клинике <span class="dim">Like Clinic</span></h2>
+      <p data-anim="" class="lead" style="max-width:660px; margin-bottom:36px">
+        Общая стоматология полного цикла на ул. Гоголя 20. Терапия, хирургия, имплантация, ортопедия, ортодонтия и детский приём в одной клинике — без направлений в другие центры.
+      </p>
+      <div class="bento">
+        <div data-anim="" class="b-photo span2 row2" style="min-height:320px">
+          <img src="assets/interior-1.jpg" alt="Кабинет Like Clinic" />
+          <span>Кабинет на Гоголя 20 · ЖК Central Park</span>
+        </div>
+        <div data-anim="" class="b-card">
+          <div style="display:flex; align-items:center; justify-content:space-between">
+            <h3 class="h3" style="display:flex; align-items:center; gap:8px">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              Приём 24/7
+            </h3>
+            <span class="dot-pulse-wrap"><span class="dot-core"></span><span class="dot-ring"></span></span>
+          </div>
+          <p class="sm">Острая зубная боль не ждёт до утра. Дежурный врач готов принять в любое время суток.</p>
+        </div>
+        <div data-anim="" class="b-card">
+          <h3 class="h3" style="display:flex; align-items:center; gap:8px">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            Цена в договоре
+          </h3>
+          <p class="sm">Смета и план лечения составляются до начала работ. Никаких скрытых платежей в процессе.</p>
+        </div>
+        <div data-anim="" class="b-photo">
+          <img src="assets/interior-2.jpg" alt="Интерьер клиники" />
+          <span>Стерильность и оборудование</span>
+        </div>
+        <div data-anim="" class="b-card">
+          <h3 class="h3" style="display:flex; align-items:center; gap:8px">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            Взрослым и детям
+          </h3>
+          <p class="sm">Семейный формат: комфортный приём без слёз для детей и полный комплекс для взрослых.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Направления и услуги -->
+  <section id="services" class="sec">
+    <div class="wrap">
+      <div data-anim="" style="display:flex; flex-wrap:wrap; align-items:flex-end; justify-content:space-between; gap:16px; margin-bottom:28px">
+        <div>
+          <h2 class="h2" style="margin-bottom:6px">Наши <span class="dim">направления</span></h2>
+          <p class="sm" style="max-width:440px">Цены фиксируются в договоре на первом приёме. Доступна рассрочка 0-0-12.</p>
+        </div>
+        <span class="promo-tag" style="padding:6px 14px; font-size:13.5px">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="14" x="2" y="5" rx="2"/><line x1="2" x2="22" y1="10" y2="10"/></svg>
+          Рассрочка Kaspi 0-0-12 на все услуги
+        </span>
+      </div>
+
+      <!-- Быстрые фильтры по направлениям -->
+      <div class="tabs-wrap" data-anim="">
+        <button class="{{ tabAllClass }}" onClick="{{ onTabAll }}">Все направления</button>
+        <button class="{{ tabPromoClass }}" onClick="{{ onTabPromo }}">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg>
+          Акции месяца
+        </button>
+        <button class="{{ tabImplantsClass }}" onClick="{{ onTabImplants }}">Импланты и коронки</button>
+        <button class="{{ tabTherapyClass }}" onClick="{{ onTabTherapy }}">Терапия и гигиена</button>
+        <button class="{{ tabOrthoClass }}" onClick="{{ onTabOrtho }}">Брекеты</button>
+        <button class="{{ tabKidsClass }}" onClick="{{ onTabKids }}">Детям</button>
+      </div>
+
+      <!-- Сетка карточек услуг -->
+      <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr)); gap:16px">
+        <sc-for list="{{ services }}" as="s" hint-placeholder-count="6">
+          <a data-anim="" class="{{ s.cardClass }}" href="#form" data-service-name="{{ s.title }}">
+            <span class="svc-mark">{{ s.cat }}</span>
+            <div style="display:flex; align-items:center; justify-content:space-between; gap:10px">
+              <span class="svc-cat">{{ s.cat }}</span>
+              <sc-if value="{{ s.isPromo }}">
+                <span class="promo-tag">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg>
+                  {{ s.tag }}
+                </span>
+              </sc-if>
+            </div>
+            <span class="h3" style="font-size:21px">{{ s.title }}</span>
+            <span class="sm" style="max-width:320px">{{ s.desc }}</span>
+            <div style="display:flex; align-items:baseline; gap:10px; margin-top:auto; padding-top:16px; border-top:1px solid var(--line)">
+              <span class="svc-price">{{ s.price }}</span>
+              <sc-if value="{{ s.oldPrice }}">
+                <span style="font-size:15px; color:var(--faint); text-decoration:line-through">{{ s.oldPrice }}</span>
+              </sc-if>
+            </div>
+            <span class="arrow" style="margin-top:6px">
+              Записаться
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </span>
+          </a>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <!-- Блок доверия и статистика (Why Like Clinic) -->
+  <section id="why" class="sec">
+    <div class="wrap">
+      <div class="dark" style="padding:clamp(26px,4.5vw,60px)">
+        <div class="stat-row" data-anim="" style="padding-bottom:clamp(28px,4vw,48px); border-bottom:1px solid rgba(255,255,255,.14); margin-bottom:clamp(28px,4vw,48px)">
+          <div class="stat">
+            <div class="stat-n">10+</div>
+            <div class="stat-t">лет опыта у каждого врача клиники</div>
+          </div>
+          <div class="stat">
+            <div class="stat-n">24/7</div>
+            <div class="stat-t">круглосуточный приём, включая острую боль</div>
+          </div>
+          <div class="stat">
+            <div class="stat-n">0-0-12</div>
+            <div class="stat-t">рассрочка Kaspi без переплат и комиссий</div>
+          </div>
+          <div class="stat">
+            <div class="stat-n">8 500+</div>
+            <div class="stat-t">довольных пациентов в Алматы</div>
+          </div>
+        </div>
+
+        <h2 data-anim="" class="h2" style="color:#fff; margin-bottom:8px">Почему выбирают <span class="dim-d">Like Clinic</span></h2>
+        <p data-anim="" class="sm" style="color:var(--on-dark-faint); max-width:520px; margin-bottom:32px">
+          Спокойно за результат и за бюджет: понятный план лечения, проверенные материалы и честные цены.
+        </p>
+
+        <div class="rows">
+          <sc-for list="{{ advantages }}" as="a" hint-placeholder-count="6">
+            <div data-anim="" class="row">
+              <div class="row-t">
+                <span class="dot-core" style="margin-top:7px; flex-shrink:0"></span>
+                <span>{{ a.title }}</span>
+              </div>
+              <div class="row-d">{{ a.desc }}</div>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Врачи клиники -->
+  <section id="doctors" class="sec">
+    <div class="wrap">
+      <div data-anim="" style="display:flex; flex-wrap:wrap; align-items:flex-end; justify-content:space-between; gap:16px; margin-bottom:32px">
+        <div>
+          <h2 class="h2" style="margin-bottom:6px">Команда специалистов <span class="dim">со стажем 10+ лет</span></h2>
+          <p class="sm" style="max-width:480px">Каждым направлением занимается профильный врач. Совместные консилиумы для сложных случаев.</p>
+        </div>
+      </div>
+
+      <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,290px),1fr)); gap:18px">
+        <sc-for list="{{ doctors }}" as="d" hint-placeholder-count="3">
+          <div data-anim="" class="doc">
+            <div class="doc-img-wrap">
+              <span class="doc-badge">{{ d.tag }}</span>
+              <img src="{{ d.photo }}" alt="{{ d.name }}" />
+            </div>
+            <div class="doc-body">
+              <div class="h3" style="font-size:18px; margin-bottom:6px">{{ d.name }}</div>
+              <p class="sm">{{ d.role }}</p>
+              <div class="doc-exp">
+                <span>{{ d.exp }}</span>
+                <a href="#form" class="arrow" style="font-size:13.5px" data-service-name="Консультация врача">Записаться →</a>
+              </div>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <!-- Как проходит приём (Шаги) -->
+  <section id="steps" class="sec">
+    <div class="wrap">
+      <h2 data-anim="" class="h2" style="margin-bottom:10px">Как проходит <span class="dim">приём</span></h2>
+      <p data-anim="" class="lead" style="max-width:520px; margin-bottom:32px">
+        Четыре понятных шага от первого обращения до здоровой улыбки — без очередей и неожиданных счетов.
+      </p>
+      <div>
+        <sc-for list="{{ steps }}" as="st" hint-placeholder-count="4">
+          <div data-anim="" class="step">
+            <div class="step-n">{{ st.n }}</div>
+            <div class="h3">{{ st.title }}</div>
+            <p class="sm">{{ st.desc }}</p>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <!-- Отзывы пациентов (Карусель с кнопками) -->
+  <section id="reviews" class="sec">
+    <div class="wrap">
+      <div data-anim="" style="display:flex; flex-wrap:wrap; align-items:flex-end; justify-content:space-between; gap:16px; margin-bottom:28px">
+        <div>
+          <div style="display:flex; align-items:center; gap:8px; margin-bottom:8px">
+            <div style="display:flex; gap:3px" aria-hidden="true">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="#D9A227" stroke="#D9A227" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="#D9A227" stroke="#D9A227" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="#D9A227" stroke="#D9A227" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="#D9A227" stroke="#D9A227" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="#D9A227" stroke="#D9A227" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            </div>
+            <span style="font-size:14.5px; font-weight:600; color:var(--ink)">4.9 из 5 · Рейтинг на 2ГИС</span>
+          </div>
+          <h2 class="h2">Отзывы <span class="dim">пациентов</span></h2>
+        </div>
+        <div style="display:flex; align-items:center; gap:14px">
+          <a class="arrow" href="https://www.instagram.com/like_clinic_almaty">Instagram @like_clinic_almaty →</a>
+          <div class="rail-controls">
+            <button class="ctrl-btn" onClick="{{ onPrevReview }}" aria-label="Предыдущий отзыв">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+            </button>
+            <button class="ctrl-btn" onClick="{{ onNextReview }}" aria-label="Следующий отзыв">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Горизонтальная лента отзывов -->
+    <div class="wrap rail">
+      <sc-for list="{{ reviews }}" as="r" hint-placeholder-count="4">
+        <div data-anim="" class="rev">
+          <div class="rev-head">
+            <span class="rev-badge">{{ r.badge }}</span>
+            <div style="display:flex; gap:2px" aria-label="Оценка 5 из 5">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="#D9A227"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="#D9A227"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="#D9A227"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="#D9A227"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="#D9A227"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            </div>
+          </div>
+          <div class="quote">“</div>
+          <p style="font-size:15px; line-height:1.62; color:#2C403C; margin:0">{{ r.text }}</p>
+          <div style="margin-top:auto; padding-top:12px; display:flex; align-items:center; justify-content:space-between; border-top:1px solid var(--line)">
+            <span style="font-size:15px; font-weight:600">{{ r.name }}</span>
+            <span style="font-size:13px; color:var(--faint)">{{ r.date }}</span>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <!-- Интерактивный FAQ (Вопрос-Ответ) -->
+  <section id="faq" class="sec">
+    <div class="wrap">
+      <div data-anim="" style="margin-bottom:28px">
+        <h2 class="h2" style="margin-bottom:8px">Частые <span class="dim">вопросы</span></h2>
+        <p class="lead" style="max-width:540px">Ответы на главные вопросы перед посещением стоматологии Like Clinic.</p>
+      </div>
+
+      <div class="faq-list" data-anim="">
+        <details class="faq-item" open>
+          <summary class="faq-sum">
+            <span>Работаете ли вы ночью при острой зубной боли?</span>
+            <span class="faq-chevron">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="m6 9 6 6 6-6"/></svg>
+            </span>
+          </summary>
+          <div class="faq-body">
+            Да, наша клиника работает круглосуточно 24/7 без праздников и выходных. Дежурный стоматолог всегда на смене на ул. Гоголя 20. Вы можете позвонить нам или приехать сразу — мы незамедлительно снимем боль и окажем экстренную помощь.
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-sum">
+            <span>Как оформить рассрочку Kaspi 0-0-12?</span>
+            <span class="faq-chevron">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="m6 9 6 6 6-6"/></svg>
+            </span>
+          </summary>
+          <div class="faq-body">
+            Рассрочка оформляется через официальное приложение Kaspi прямо у администратора за 2 минуты. Без первоначального взноса, без процентов и без скрытых страховок. Вы платите ровно ту сумму, которая указана в договоре, равными долями до 12 месяцев.
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-sum">
+            <span>Больно ли устанавливать зубной имплант?</span>
+            <span class="faq-chevron">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="m6 9 6 6 6-6"/></svg>
+            </span>
+          </summary>
+          <div class="faq-body">
+            Процедура проходит абсолютно безболезненно. Мы применяем 3-этапную местную компьютерную анестезию европейского стандарта. По ощущениям установка одного импланта часто переносится даже легче и быстрее, чем обычное удаление зуба.
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-sum">
+            <span>Что входит в первичную бесплатную консультацию?</span>
+            <span class="faq-chevron">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="m6 9 6 6 6-6"/></svg>
+            </span>
+          </summary>
+          <div class="faq-body">
+            Врач проводит детальный визуальный осмотр, фотопротокол, оценивает состояние зубов и десен, при необходимости направляет на снимок. Затем составляет подробный пошаговый план лечения с фиксированной сметой, которая не изменится в процессе.
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-sum">
+            <span>Принимаете ли вы детей?</span>
+            <span class="faq-chevron">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="m6 9 6 6 6-6"/></svg>
+            </span>
+          </summary>
+          <div class="faq-body">
+            Да, у нас ведут приём сертифицированные детские стоматологи. Мы используем бережный адаптационный подход — без давления и слёз, в игровой форме. После приёма каждый маленький пациент обязательно получает подарок за смелость.
+          </div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- Форма записи на приём -->
+  <section id="form" class="sec">
+    <div class="wrap">
+      <div class="dark" style="padding:clamp(28px,4.5vw,60px); display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr)); gap:clamp(28px,4vw,56px); align-items:start">
+        <div data-anim="">
+          <div style="display:inline-flex; align-items:center; gap:8px; background:rgba(255,255,255,0.08); padding:6px 14px; border-radius:999px; margin-bottom:16px">
+            <span class="dot-pulse-wrap"><span class="dot-core"></span><span class="dot-ring"></span></span>
+            <span style="font-size:13.5px; color:#A9DDD8">Дежурный врач сейчас в клинике</span>
+          </div>
+          <h2 class="h2" style="color:#fff; margin-bottom:14px">
+            Начните путь<br />
+            <span class="dim-d">к здоровой улыбке</span>
+          </h2>
+          <p class="sm" style="color:var(--on-dark-faint); max-width:420px; margin-bottom:28px">
+            Оставьте номер телефона — перезвоним в течение 10 минут и забронируем удобное время. Осмотр и консультация врача всегда бесплатны.
+          </p>
+          <div style="display:grid; gap:14px; font-size:15.5px">
+            <a href="tel:+77073606049" style="color:#fff; font-weight:600; display:flex; align-items:center; gap:8px">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              +7 707 360 6049
+            </a>
+            <a href="https://wa.me/77073606049" style="color:#25D366; display:flex; align-items:center; gap:8px; font-weight:500">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 11.5a8.4 8.4 0 0 1-12.4 7.4L3 20.5l1.7-5.4A8.4 8.4 0 1 1 21 11.5Z"/></svg>
+              Написать в WhatsApp
+            </a>
+            <span style="color:var(--on-dark-faint); font-size:14.5px; display:flex; align-items:center; gap:7px">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+              Алматы, ул. Гоголя 20 · ЖК Central Park Residence, 2 этаж
+            </span>
+          </div>
+        </div>
+
+        <div data-anim="" style="background:#fff; border-radius:var(--r-card); padding:clamp(22px,3vw,34px); box-shadow:0 18px 40px rgba(0,0,0,0.2)">
+          <sc-if value="{{ sent }}">
+            <div style="display:flex; flex-direction:column; align-items:center; text-align:center; gap:12px; justify-content:center; min-height:300px">
+              <div style="width:58px; height:58px; border-radius:50%; background:#E6F7F3; color:var(--teal); display:flex; align-items:center; justify-content:center">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+              </div>
+              <div class="h3" style="color:var(--teal-dark); font-size:22px">Заявка принята!</div>
+              <p class="sm" style="max-width:320px">Администратор Like Clinic свяжется с вами по указанному телефону в течение 10 минут.</p>
+              <a class="btn btn-light btn-sm" href="https://wa.me/77073606049" style="margin-top:8px">Написать напрямую в WhatsApp</a>
+              <button style="border:0; background:none; color:var(--muted); font-size:13.5px; text-decoration:underline; cursor:pointer; margin-top:6px" onClick="{{ onResetForm }}">Отправить другую заявку</button>
+            </div>
+          </sc-if>
+
+          <sc-if value="{{ notSent }}">
+            <div style="display:flex; flex-direction:column; gap:16px">
+              <div style="font-size:18px; font-weight:600; color:var(--ink)">Запись на бесплатную консультацию</div>
+              <label class="field">
+                <span>Ваше имя</span>
+                <input value="{{ name }}" onChange="{{ onName }}" placeholder="Как к вам обращаться" />
+              </label>
+              <label class="field">
+                <span>Телефон</span>
+                <input type="tel" inputmode="tel" value="{{ phone }}" onChange="{{ onPhone }}" placeholder="+7 (___) ___-__-__" />
+              </label>
+              <label class="field">
+                <span>Интересующая услуга</span>
+                <select value="{{ service }}" onChange="{{ onService }}">
+                  <option value="Консультация">Бесплатная консультация</option>
+                  <option value="Имплантация">Зубные импланты под ключ</option>
+                  <option value="Чистка и гигиена">3-этапная чистка зубов (14 990 ₸)</option>
+                  <option value="Коронки и протезирование">Коронки и протезирование</option>
+                  <option value="Брекеты и выравнивание">Брекеты и элайнеры</option>
+                  <option value="Лечение кариеса">Лечение кариеса</option>
+                  <option value="Детская стоматология">Детская стоматология</option>
+                  <option value="Острая боль, срочно">Острая боль (приём 24/7)</option>
+                </select>
+              </label>
+
+              <!-- Выбор времени -->
+              <div>
+                <span style="font-size:14px; font-weight:500; color:#2C403C">Когда вам удобно прийти?</span>
+                <div class="slot-pills">
+                  <button type="button" class="{{ slotAsapClass }}" onClick="{{ onSlotAsap }}">Как можно скорее</button>
+                  <button type="button" class="{{ slotTodayClass }}" onClick="{{ onSlotToday }}">Сегодня вечером</button>
+                  <button type="button" class="{{ slotNightClass }}" onClick="{{ onSlotNight }}">Ночью (24/7)</button>
+                  <button type="button" class="{{ slotTomorrowClass }}" onClick="{{ onSlotTomorrow }}">Завтра</button>
+                </div>
+              </div>
+
+              <button class="btn btn-primary" onClick="{{ onSubmit }}" style="margin-top:6px; width:100%">
+                Записаться на приём
+              </button>
+              <span style="font-size:12.5px; color:var(--faint); line-height:1.45; text-align:center">
+                Нажимая кнопку, вы подтверждаете согласие на обработку персональных данных.
+              </span>
+            </div>
+          </sc-if>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Контакты и карта -->
+  <section id="contacts" class="sec" style="padding-bottom:clamp(56px,7vw,96px)">
+    <div class="wrap" style="display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr)); gap:24px; align-items:stretch">
+      <div data-anim="">
+        <h2 class="h2" style="margin-bottom:24px">ул. Гоголя 20,<br /><span class="dim">центр Алматы</span></h2>
+        <div style="display:grid; gap:18px">
+          <div>
+            <div class="sm" style="font-size:13.5px; color:var(--faint); margin-bottom:2px">Точный адрес</div>
+            <span style="font-size:16.5px; font-weight:500">ул. Гоголя 20, Алматы</span>
+            <div class="sm" style="margin-top:2px">ЖК Central Park Residence, 2 этаж (вход с ул. Гоголя)</div>
+          </div>
+          <div>
+            <div class="sm" style="font-size:13.5px; color:var(--faint); margin-bottom:2px">Режим работы</div>
+            <span style="font-size:16.5px; font-weight:500; display:flex; align-items:center; gap:8px">
+              <span class="dot-pulse-wrap"><span class="dot-core"></span><span class="dot-ring"></span></span>
+              Круглосуточно, 7 дней в неделю без выходных
+            </span>
+          </div>
+          <div>
+            <div class="sm" style="font-size:13.5px; color:var(--faint); margin-bottom:2px">Телефон и WhatsApp</div>
+            <a href="tel:+77073606049" style="font-size:16.5px; color:var(--ink); font-weight:600">+7 707 360 6049</a>
+          </div>
+          <div>
+            <div class="sm" style="font-size:13.5px; color:var(--faint); margin-bottom:2px">Instagram</div>
+            <a href="https://www.instagram.com/like_clinic_almaty" target="_blank" rel="noopener" style="font-size:16px">@like_clinic_almaty</a>
+          </div>
+        </div>
+      </div>
+
+      <div data-anim="" class="map-card">
+        <iframe
+          title="Карта: Like Clinic, ул. Гоголя 20, Алматы"
+          loading="lazy"
+          src="https://yandex.ru/map-widget/v1/?ll=76.960005%2C43.260814&amp;z=17&amp;pt=76.960005%2C43.260814%2Cpm2rdm"></iframe>
+        <div class="map-foot">
+          <span style="font-size:14.5px; color:var(--muted)">ЖК Central Park Residence, 2 этаж</span>
+          <a class="arrow" href="https://2gis.kz/almaty/geo/70000001054098473" target="_blank" rel="noopener">
+            Открыть в 2ГИС
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Футер -->
+  <footer style="background:var(--dark); color:#fff; border-radius:var(--r-block) var(--r-block) 0 0; padding:clamp(36px,5vw,64px) 0 0; overflow:hidden">
+    <div class="wrap">
+      <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr)); gap:28px; padding-bottom:32px">
+        <div>
+          <div class="h3" style="color:#fff; margin-bottom:10px">Готовы к новой улыбке?</div>
+          <p class="sm" style="color:var(--on-dark-faint); margin-bottom:20px; max-width:280px">
+            Запишитесь на бесплатный первичный осмотр — составим понятный план лечения и смету.
+          </p>
+          <a class="btn btn-primary btn-sm" href="#form">Записаться на осмотр</a>
+        </div>
+        <div>
+          <div class="sm" style="color:var(--on-dark-faint); font-size:13.5px; margin-bottom:6px">Телефон и WhatsApp</div>
+          <a href="tel:+77073606049" style="color:#fff; font-size:17px; font-weight:600">+7 707 360 6049</a>
+          <div class="sm" style="color:var(--on-dark-faint); margin-top:10px">Круглосуточно 24/7, без выходных</div>
+          <div style="margin-top:8px">
+            <a href="https://wa.me/77073606049" style="color:#25D366; font-size:14.5px; font-weight:500">Написать в WhatsApp →</a>
+          </div>
+        </div>
+        <div>
+          <div class="sm" style="color:var(--on-dark-faint); font-size:13.5px; margin-bottom:6px">Адрес клиники</div>
+          <div style="font-size:16px">Алматы, ул. Гоголя 20</div>
+          <div class="sm" style="color:var(--on-dark-faint); margin-top:4px">ЖК Central Park Residence, 2 этаж</div>
+          <a href="https://www.instagram.com/like_clinic_almaty" target="_blank" rel="noopener" style="color:var(--on-dark-faint); font-size:14.5px; display:inline-block; margin-top:14px">@like_clinic_almaty</a>
+        </div>
+      </div>
+
+      <div style="border-top:1px solid rgba(255,255,255,.12); padding:20px 0; display:flex; flex-wrap:wrap; gap:12px 24px; justify-content:space-between; align-items:center">
+        <span style="display:flex; align-items:center; gap:10px">
+          <img src="assets/logo.png" alt="" width="28" height="28" style="width:28px; height:28px; border-radius:8px" />
+          <span style="font-size:14.5px">Like Clinic · Стоматология в Алматы</span>
+        </span>
+        <span class="sm" style="color:var(--on-dark-faint); font-size:13.5px">Общая стоматология · приём взрослых и детей 24/7</span>
+      </div>
+      <div class="foot-mark" aria-hidden="true">LIKE CLINIC</div>
+    </div>
+  </footer>
+
+  <!-- Мобильный плавающий бар (быстрые действия) -->
+  <sc-if value="{{ isMobile }}">
+    <div class="mob-bar">
+      <a class="mob-bar-btn mob-bar-ghost" href="tel:+77073606049" aria-label="Позвонить в клинику">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        <span>Позвонить</span>
+      </a>
+      <a class="mob-bar-btn mob-bar-wa" href="https://wa.me/77073606049" aria-label="Написать в WhatsApp">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-12.4 7.4L3 20.5l1.7-5.4A8.4 8.4 0 1 1 21 11.5Z"/></svg>
+        <span>WhatsApp</span>
+      </a>
+      <a class="mob-bar-btn mob-bar-primary" href="#form" aria-label="Записаться на приём">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg>
+        <span>Запись</span>
+      </a>
+    </div>
+  </sc-if>
+
+</div>
+</x-dc>
+
+<script type="text/x-dc" data-dc-script data-props="{}">
+class Component extends DCLogic {
+  state = {
+    w: typeof window !== 'undefined' ? window.innerWidth : 1200,
+    scrolled: false,
+    name: '',
+    phone: '',
+    service: 'Консультация',
+    timeSlot: 'В ближайшее время',
+    sent: false,
+    menuOpen: false,
+    activeTab: 'all'
+  };
+
+  componentDidMount() {
+    this._onResize = () => this.setState({ w: window.innerWidth });
+    this._onScroll = () => {
+      const isScrolled = window.scrollY > 25;
+      if (isScrolled !== this.state.scrolled) {
+        this.setState({ scrolled: isScrolled });
+      }
+    };
+    window.addEventListener('resize', this._onResize);
+    window.addEventListener('scroll', this._onScroll, { passive: true });
+
+    // Прогрессивное улучшение: клик по карточке услуги заполняет форму
+    this._onDocClick = (e) => {
+      const trigger = e.target.closest('[data-service-name]');
+      if (trigger) {
+        const name = trigger.getAttribute('data-service-name');
+        if (name) {
+          this.setState({ service: name, sent: false });
+        }
+      }
+    };
+    document.addEventListener('click', this._onDocClick);
+
+    const reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduced) return;
+
+    document.body.classList.add('anim-on');
+
+    // Плавное появление элементов при скролле со стаггером
+    const io = new IntersectionObserver((entries) => {
+      const hits = entries.filter((e) => e.isIntersecting);
+      hits.forEach((e, i) => {
+        e.target.style.transitionDelay = Math.min(i, 5) * 65 + 'ms';
+        e.target.classList.add('seen');
+        io.unobserve(e.target);
+      });
+    }, { threshold: 0.05, rootMargin: '0px 0px -5% 0px' });
+
+    const arm = () => {
+      document.querySelectorAll('[data-anim]').forEach((el) => {
+        if (el.dataset.animArmed) return;
+        el.dataset.animArmed = '1';
+        io.observe(el);
+      });
+    };
+    arm();
+    this._mo = new MutationObserver(arm);
+    this._mo.observe(document.body, { childList: true, subtree: true });
+    this._t = setTimeout(() => this._mo && this._mo.disconnect(), 20000);
+    this._io = io;
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('resize', this._onResize);
+    window.removeEventListener('scroll', this._onScroll);
+    if (this._onDocClick) document.removeEventListener('click', this._onDocClick);
+    if (this._mo) this._mo.disconnect();
+    if (this._io) this._io.disconnect();
+    clearTimeout(this._t);
+  }
+
+  scrollReviews(dir) {
+    const rail = document.querySelector('.rail');
+    if (rail) {
+      const step = Math.min(window.innerWidth * 0.82, 360);
+      rail.scrollBy({ left: dir * step, behavior: 'smooth' });
+    }
+  }
+
+  renderVals() {
+    const w = this.state.w;
+    const isDesktop = w >= 1040;
+    const isMobile = w < 768;
+    const menuOpen = this.state.menuOpen;
+    const activeTab = this.state.activeTab;
+    const timeSlot = this.state.timeSlot;
+
+    const allServices = [
+      { id: 1, cat: 'Хирургия', catKey: 'implants', title: 'Зубные импланты под ключ', desc: 'Установка премиум-импланта, формирователь и металлокерамическая коронка с гарантией.', price: '130 000 ₸', oldPrice: '150 000 ₸', isPromo: true, tag: 'Акция месяца', cardClass: 'svc svc-promo' },
+      { id: 2, cat: 'Гигиена', catKey: 'therapy', title: '3-этапная чистка зубов', desc: 'Ультразвуковое снятие камня, Air Flow полировка и глубокое фторирование эмали.', price: '14 990 ₸', oldPrice: '20 000 ₸', isPromo: true, tag: 'Акция месяца', cardClass: 'svc svc-promo' },
+      { id: 3, cat: 'Ортопедия', catKey: 'implants', title: 'Коронки и протезирование', desc: 'Циркониевые и металлокерамические коронки, виниры и бюгельные съёмные протезы.', price: 'от 60 000 ₸', isPromo: false, cardClass: 'svc' },
+      { id: 4, cat: 'Ортодонтия', catKey: 'ortho', title: 'Брекеты и элайнеры', desc: 'Металлические, керамические и сапфировые брекет-системы. Ведение ортодонтом до идеала.', price: 'от 250 000 ₸', isPromo: false, cardClass: 'svc' },
+      { id: 5, cat: 'Терапия', catKey: 'therapy', title: 'Лечение кариеса под ключ', desc: 'Анестезия, полная очистка и эстетическая реставрация японским фотополимером за 1 визит.', price: 'от 15 000 ₸', isPromo: false, cardClass: 'svc' },
+      { id: 6, cat: 'Терапия', catKey: 'therapy', title: 'Лечение каналов (пульпит)', desc: 'Эндодонтия с микроскопом и машинной обработкой каналов с контрольным снимком.', price: 'от 25 000 ₸', isPromo: false, cardClass: 'svc' },
+      { id: 7, cat: 'Детский приём', catKey: 'kids', title: 'Детская стоматология без боли', desc: 'Бережный адаптационный приём для детей любого возраста, лечение молочных зубов, подарки.', price: 'от 10 000 ₸', isPromo: false, cardClass: 'svc' },
+      { id: 8, cat: 'Хирургия', catKey: 'implants', title: 'Удаление зубов любой сложности', desc: 'Безболезненное удаление разрушенных зубов и зубов мудрости (восьмёрок) без травм десны.', price: 'от 12 000 ₸', isPromo: false, cardClass: 'svc' }
+    ];
+
+    let filtered = allServices;
+    if (activeTab === 'promo') {
+      filtered = allServices.filter(s => s.isPromo);
+    } else if (activeTab === 'implants') {
+      filtered = allServices.filter(s => s.catKey === 'implants');
+    } else if (activeTab === 'therapy') {
+      filtered = allServices.filter(s => s.catKey === 'therapy');
+    } else if (activeTab === 'ortho') {
+      filtered = allServices.filter(s => s.catKey === 'ortho');
+    } else if (activeTab === 'kids') {
+      filtered = allServices.filter(s => s.catKey === 'kids');
+    }
+
+    return {
+      isDesktop,
+      isMobile,
+      menuOpen,
+      notMenuOpen: !menuOpen,
+      scrolled: this.state.scrolled,
+      hdrClass: this.state.scrolled ? 'hdr is-scrolled' : 'hdr',
+      drawerClass: menuOpen ? 'mob-drawer open' : 'mob-drawer',
+
+      onToggleMenu: () => this.setState({ menuOpen: !this.state.menuOpen }),
+      onCloseMenu: () => this.setState({ menuOpen: false }),
+      onStopProp: (e) => e.stopPropagation(),
+
+      // Фильтры категорий
+      activeTab,
+      tabAllClass: activeTab === 'all' ? 'tab-btn active' : 'tab-btn',
+      tabPromoClass: activeTab === 'promo' ? 'tab-btn active' : 'tab-btn',
+      tabImplantsClass: activeTab === 'implants' ? 'tab-btn active' : 'tab-btn',
+      tabTherapyClass: activeTab === 'therapy' ? 'tab-btn active' : 'tab-btn',
+      tabOrthoClass: activeTab === 'ortho' ? 'tab-btn active' : 'tab-btn',
+      tabKidsClass: activeTab === 'kids' ? 'tab-btn active' : 'tab-btn',
+
+      onTabAll: () => this.setState({ activeTab: 'all' }),
+      onTabPromo: () => this.setState({ activeTab: 'promo' }),
+      onTabImplants: () => this.setState({ activeTab: 'implants' }),
+      onTabTherapy: () => this.setState({ activeTab: 'therapy' }),
+      onTabOrtho: () => this.setState({ activeTab: 'ortho' }),
+      onTabKids: () => this.setState({ activeTab: 'kids' }),
+      services: filtered,
+
+      // Состояние формы и слоты времени
+      name: this.state.name,
+      phone: this.state.phone,
+      service: this.state.service,
+      timeSlot,
+      slotAsapClass: timeSlot === 'В ближайшее время' ? 'slot-pill active' : 'slot-pill',
+      slotTodayClass: timeSlot === 'Сегодня вечером' ? 'slot-pill active' : 'slot-pill',
+      slotNightClass: timeSlot === 'Ночью (24/7)' ? 'slot-pill active' : 'slot-pill',
+      slotTomorrowClass: timeSlot === 'Завтра' ? 'slot-pill active' : 'slot-pill',
+
+      onSlotAsap: () => this.setState({ timeSlot: 'В ближайшее время' }),
+      onSlotToday: () => this.setState({ timeSlot: 'Сегодня вечером' }),
+      onSlotNight: () => this.setState({ timeSlot: 'Ночью (24/7)' }),
+      onSlotTomorrow: () => this.setState({ timeSlot: 'Завтра' }),
+
+      sent: this.state.sent,
+      notSent: !this.state.sent,
+      onName: (e) => this.setState({ name: e.target.value }),
+      onPhone: (e) => this.setState({ phone: e.target.value }),
+      onService: (e) => this.setState({ service: e.target.value }),
+      onSubmit: () => this.setState({ sent: true }),
+      onResetForm: () => this.setState({ sent: false, name: '', phone: '' }),
+
+      // Управление отзывами
+      onPrevReview: () => this.scrollReviews(-1),
+      onNextReview: () => this.scrollReviews(1),
+
+      // Статичные списки данных
+      advantages: [
+        { title: 'Полный цикл лечения на Гоголя 20', desc: 'Терапия, хирургия, имплантация, ортопедия, ортодонтия и детский приём — всё в одной клинике, без беготни по городу.' },
+        { title: 'Опытная команда узких специалистов', desc: 'Каждым этапом занимается профильный врач со стажем более 10 лет.' },
+        { title: 'Круглосуточный приём 24/7', desc: 'Острая зубная боль не ждёт утра — дежурный стоматолог всегда готов помочь ночью, в выходные и праздники.' },
+        { title: 'Рассрочка Kaspi 0-0-12', desc: 'Лечите сейчас — оплачивайте равными частями до 12 месяцев без первоначального взноса и переплат.' },
+        { title: 'Фиксированная смета в договоре', desc: 'Точный план и прозрачная стоимость фиксируются до начала лечения. Никаких неожиданных доплат.' },
+        { title: 'Официальная гарантия', desc: 'Гарантия на все виды работ, пломбы, коронки и пожизненная гарантия на импланты.' }
+      ],
+      doctors: [
+        { photo: 'assets/doctor-bexultan.jpg', name: 'Еркенов Бексултан Канатбекович', role: 'Хирург-имплантолог, ортопед, ортодонт, терапевт', exp: 'Стаж более 10 лет', tag: 'Имплантолог / Ортопед' },
+        { photo: 'assets/doctor-zhasurbek.jpg', name: 'Аззамкулов Жасурбек Хаетжанович', role: 'Стоматолог-терапевт, ортопед, хирург взрослого и детского приёма', exp: 'Стаж более 10 лет', tag: 'Терапевт / Детский врач' },
+        { photo: 'assets/doctor-sardor.jpg', name: 'Астанов Сардор Абдинабиевич', role: 'Стоматолог-ортопед, терапевт, хирург', exp: 'Стаж более 10 лет', tag: 'Ортопед / Хирург' }
+      ],
+      steps: [
+        { n: '01', title: 'Быстрая запись за 1 минуту', desc: 'Позвоните, напишите в WhatsApp или оставьте заявку на сайте. Мгновенно подберём удобное время — днём или ночью.' },
+        { n: '02', title: 'Бесплатный осмотр и план', desc: 'Врач бережно осмотрит полость рта, сделает снимки при необходимости и понятно объяснит каждый нюанс.' },
+        { n: '03', title: 'Смета и рассрочка 0-0-12', desc: 'Составляем варианты лечения с фиксированной итоговой ценой. При желании оформляем рассрочку Kaspi за 2 минуты.' },
+        { n: '04', title: 'Комфортное лечение без боли', desc: 'Процедуры проходят легко под современной 3-этапной анестезией. Выдаём рекомендации и остаёмся на связи 24/7.' }
+      ],
+      reviews: [
+        { name: 'Айгерим С.', text: 'Обратилась в 3 часа ночи с дикой зубной болью. Приняли сразу, сделали снимок, доктор аккуратно обезболил и удалил нерв. Ушла с огромным облегчением! Огромное спасибо за круглосуточную помощь.', date: 'Вчера', badge: 'Ночной приём 24/7' },
+        { name: 'Дмитрий К.', text: 'Поставил два импланта под ключ по акции за 130 000 ₸. Взял рассрочку Kaspi на 12 месяцев. Цена ровно та, что в договоре, ни одного лишнего тенге не взяли. Прижились отлично!', date: '3 дня назад', badge: 'Имплантация' },
+        { name: 'Мадина А.', text: 'Привела 6-летнего сына с пульпитом. Сын панически боится врачей, но доктор Жасурбек нашёл контакт за пару минут. Полечили без единой слезинки, ещё и подарок подарили!', date: 'Неделю назад', badge: 'Детский приём' },
+        { name: 'Ержан Б.', text: 'Делал 3-этапную чистку зубов Air Flow по акции за 14 990 ₸. Зубы посветлели, налёт от кофе полностью ушёл. В клинике идеальная чистота и вежливый персонал. Рекомендую!', date: '2 недели назад', badge: 'Чистка Air Flow' }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>
