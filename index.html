@@ -127,19 +127,20 @@
     font-size: 11.5px; font-weight: 500; color: var(--muted); line-height: 1.2;
   }
 
-  /* Навигация десктоп в стиле капсулы */
-  .nav-desktop {
-    display: flex; align-items: center; gap: 3px;
-    background: rgba(255, 255, 255, 0.72); border: 1px solid rgba(207, 217, 215, 0.8);
-    padding: 4px 6px; border-radius: 999px; backdrop-filter: blur(8px);
+  /* Навигация десктоп в стиле аккуратной капсулы */
+  .hdr-nav {
+    display: flex; align-items: center; gap: 2px;
+    background: rgba(255, 255, 255, 0.82); border: 1px solid rgba(207, 217, 215, 0.85);
+    padding: 4px 6px; border-radius: 999px; backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+    box-shadow: 0 4px 16px rgba(16, 40, 36, 0.04);
   }
   .nav-a {
-    font-size: 13.5px; font-weight: 500; color: #1E332F; white-space: nowrap;
+    font-size: 13.5px; font-weight: 500; color: #1E332F; white-space: nowrap !important;
     padding: 7px 13px; border-radius: 999px; text-decoration: none;
     transition: all .2s var(--ease);
   }
   .nav-a:hover {
-    color: var(--teal-dark); background: rgba(13, 127, 117, 0.09);
+    color: var(--teal-dark); background: rgba(13, 127, 117, 0.08);
   }
 
   /* Правый блок шапки */
@@ -148,16 +149,33 @@
   }
   .hdr-phone {
     display: inline-flex; align-items: center; gap: 8px;
-    font-size: 14.5px; font-weight: 600; color: var(--ink); text-decoration: none;
-    white-space: nowrap; padding: 7px 13px; border-radius: 999px;
-    background: rgba(255, 255, 255, 0.7); border: 1px solid var(--line);
+    font-size: 14px; font-weight: 600; color: var(--ink); text-decoration: none;
+    white-space: nowrap !important; padding: 8px 14px; border-radius: 999px;
+    background: rgba(255, 255, 255, 0.82); border: 1px solid var(--line);
+    backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
     transition: all .2s var(--ease);
   }
   .hdr-phone:hover {
     border-color: var(--teal); color: var(--teal-dark); background: #fff;
   }
-  .hdr-btn {
-    min-height: 40px; padding: 9px 20px; font-size: 14px; font-weight: 600;
+  .hdr-cta {
+    display: inline-flex; align-items: center; justify-content: center;
+    min-height: 40px; padding: 9px 22px; font-size: 14px; font-weight: 600;
+    white-space: nowrap !important; border-radius: 999px;
+    background: var(--teal) !important; color: #ffffff !important;
+    box-shadow: 0 4px 14px rgba(13, 127, 117, 0.28);
+    transition: all .2s var(--ease); text-decoration: none;
+  }
+  .hdr-cta:hover {
+    background: var(--teal-dark) !important; color: #ffffff !important;
+    transform: translateY(-1px); box-shadow: 0 6px 18px rgba(13, 127, 117, 0.35);
+  }
+
+  @media (max-width: 1160px) and (min-width: 1041px) {
+    .hdr-nav { gap: 1px; padding: 3px 4px; }
+    .nav-a { font-size: 12.5px; padding: 6px 9px; }
+    .hdr-phone { font-size: 13px; padding: 7px 10px; }
+    .hdr-cta { padding: 8px 16px; font-size: 13px; }
   }
 
   /* Гамбургер кнопка для мобильных */
@@ -222,77 +240,88 @@
 
   /* ---------- hero section ---------- */
   .hero {
-    position: relative; overflow: hidden;
-    padding-top: clamp(28px, 4vw, 56px); padding-bottom: clamp(40px, 6vw, 76px);
+    position: relative; overflow: hidden; display: flex; align-items: center;
+    min-height: 640px; padding-top: clamp(36px, 5vw, 68px); padding-bottom: clamp(48px, 6vw, 84px);
   }
-  .hero-wrap {
-    display: grid; grid-template-columns: 1.15fr 0.95fr;
-    gap: clamp(28px, 4vw, 56px); align-items: center;
+  .hero-desktop-bg {
+    position: absolute; inset: 0; z-index: 1; overflow: hidden; pointer-events: none;
   }
-  .hero-content {
-    display: flex; flex-direction: column; width: 100%;
+  .hero-desktop-bg img {
+    width: 100%; height: 100%; object-fit: cover; object-position: right center;
+    transition: transform 1.2s var(--ease);
   }
-  .hero-card-mobile { display: none; }
-  .hero-card-desktop-wrap { display: flex; width: 100%; justify-content: center; }
+  .hero:hover .hero-desktop-bg img {
+    transform: scale(1.02);
+  }
+  .hero-desktop-bg::after {
+    content: ''; position: absolute; inset: 0; z-index: 2; pointer-events: none;
+    background: linear-gradient(90deg, var(--bg) 0%, var(--bg) 40%, rgba(244, 248, 247, 0.72) 56%, rgba(244, 248, 247, 0) 76%);
+  }
 
-  /* Флагманская интерактивная карточка клиники */
-  .hero-card {
-    position: relative; border-radius: var(--r-block); overflow: hidden;
-    background: #142220; border: 1px solid rgba(255, 255, 255, 0.25);
-    box-shadow: 0 22px 50px -12px rgba(13, 127, 117, 0.25);
-    aspect-ratio: 16/11; min-height: 290px; width: 100%;
-    display: flex; flex-direction: column; justify-content: space-between;
-    padding: 16px;
+  .hero-inner {
+    position: relative; z-index: 5; width: 100%;
   }
-  .hero-card-img {
+  .hero-inner > * { max-width: 530px; }
+
+  /* Интерактивная визитка клиники на мобильных (на десктопе строго скрыта) */
+  .hero-mobile-showcase {
+    display: none !important;
+  }
+  .hero-showcase-card {
+    position: relative; border-radius: 20px; overflow: hidden;
+    background: #142220; border: 1px solid rgba(255, 255, 255, 0.25);
+    box-shadow: 0 16px 40px -10px rgba(13, 127, 117, 0.26);
+    aspect-ratio: 16/10; min-height: 230px; width: 100%;
+    display: flex; flex-direction: column; justify-content: space-between;
+    padding: 12px;
+  }
+  .hero-showcase-card img {
     position: absolute; inset: 0; width: 100%; height: 100%;
     object-fit: cover; object-position: center; z-index: 1;
-    transition: transform .8s var(--ease);
   }
-  .hero-card:hover .hero-card-img { transform: scale(1.03); }
-  .hero-card::before {
+  .hero-showcase-card::before {
     content: ''; position: absolute; inset: 0; z-index: 2;
-    background: linear-gradient(180deg, rgba(14,26,24,0.48) 0%, rgba(14,26,24,0.12) 40%, rgba(14,26,24,0.8) 100%);
+    background: linear-gradient(180deg, rgba(14,26,24,0.52) 0%, rgba(14,26,24,0.08) 45%, rgba(14,26,24,0.85) 100%);
   }
-  .hero-card-top {
+  .hero-showcase-top {
     position: relative; z-index: 3;
     display: flex; align-items: center; justify-content: space-between; gap: 8px; flex-wrap: wrap;
   }
-  .hero-card-badge {
-    display: inline-flex; align-items: center; gap: 7px;
-    padding: 6px 13px; border-radius: 999px;
-    background: rgba(20, 34, 32, 0.82); backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.22);
-    color: #fff; font-size: 12.5px; font-weight: 600;
-  }
-  .hero-card-badge-rating {
-    background: rgba(255, 255, 255, 0.94); color: #162B27; border-color: rgba(255,255,255,0.9);
-  }
-  .hero-card-bottom {
-    position: relative; z-index: 3;
-    background: rgba(20, 34, 32, 0.88); backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 18px;
-    padding: 12px 16px;
-    display: flex; align-items: center; justify-content: space-between; gap: 10px; flex-wrap: wrap;
-  }
-  .hero-card-address {
-    display: flex; flex-direction: column; gap: 2px;
-  }
-  .hero-card-address-title {
-    font-size: 13.5px; font-weight: 600; color: #fff; line-height: 1.25;
-    display: flex; align-items: center; gap: 6px;
-  }
-  .hero-card-address-sub {
-    font-size: 12px; color: #B5CEC9; line-height: 1.2;
-  }
-  .hero-card-nav-link {
+  .hero-showcase-badge {
     display: inline-flex; align-items: center; gap: 6px;
-    font-size: 12.5px; font-weight: 600; color: #fff;
-    background: var(--teal); padding: 7px 14px; border-radius: 999px;
-    text-decoration: none; transition: background .2s var(--ease);
-    flex-shrink: 0;
+    padding: 5px 11px; border-radius: 999px;
+    background: rgba(14, 26, 24, 0.78); backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    color: #fff; font-size: 12px; font-weight: 600;
   }
-  .hero-card-nav-link:hover {
+  .hero-showcase-badge-rating {
+    background: rgba(14, 26, 24, 0.82); color: #FFF2D1;
+    border-color: rgba(255, 255, 255, 0.24);
+  }
+  .hero-showcase-bottom {
+    position: relative; z-index: 3;
+    background: rgba(14, 26, 24, 0.86); backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 14px;
+    padding: 10px 12px;
+    display: flex; align-items: center; justify-content: space-between; gap: 10px;
+  }
+  .hero-showcase-loc {
+    display: flex; flex-direction: column; gap: 2px; min-width: 0;
+  }
+  .hero-showcase-address {
+    font-size: 12.5px; font-weight: 600; color: #fff; line-height: 1.2;
+    display: flex; align-items: center; gap: 5px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  }
+  .hero-showcase-slogan {
+    font-size: 11.5px; color: #A8C9C3; line-height: 1.2; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  }
+  .hero-showcase-btn {
+    display: inline-flex; align-items: center; gap: 5px;
+    font-size: 12px; font-weight: 600; color: #fff;
+    background: var(--teal); padding: 7px 14px; border-radius: 999px;
+    text-decoration: none; flex-shrink: 0; transition: background .2s var(--ease);
+  }
+  .hero-showcase-btn:hover {
     background: var(--teal-bright); color: #fff;
   }
 
@@ -609,18 +638,20 @@
   @media (max-width: 1040px) {
     :root { --r-block: 28px; --r-card: 18px; }
     .burger-btn { display: flex; }
-    .nav-desktop { display: none !important; }
+    .hdr-nav, .hdr-phone, .hdr-cta { display: none !important; }
 
     .hero {
-      min-height: 0; padding-top: 18px; padding-bottom: 36px;
+      display: flex; flex-direction: column; min-height: 0;
+      padding-top: 20px; padding-bottom: 36px;
     }
-    .hero-wrap {
-      display: flex; flex-direction: column; gap: 20px;
+    .hero-desktop-bg { display: none !important; }
+    .hero-inner { width: 100%; }
+    .hero-inner > * { max-width: none; }
+    .hero-eyebrow { font-size: 13px; padding: 6px 14px; margin-bottom: 16px; }
+
+    .hero-mobile-showcase {
+      display: block !important; width: 100%; margin: 16px 0 22px;
     }
-    .hero-card-mobile {
-      display: flex; width: 100%; margin: 16px 0 20px;
-    }
-    .hero-card-desktop-wrap { display: none !important; }
     .hero-price { width: 100%; }
 
     .bento { grid-template-columns: repeat(2, 1fr); gap: 12px; }
@@ -641,10 +672,11 @@
     .hero-eyebrow { font-size: 13px; padding: 6px 14px; }
     .btn { width: 100%; min-height: 50px; }
 
-    .hero-card { aspect-ratio: 16/10; min-height: 240px; padding: 12px; }
-    .hero-card-bottom { padding: 10px 14px; gap: 8px; border-radius: 14px; }
-    .hero-card-address-title { font-size: 13px; }
-    .hero-card-address-sub { font-size: 11.5px; }
+    .hero-showcase-card { aspect-ratio: 16/10; min-height: 220px; padding: 10px; }
+    .hero-showcase-bottom { padding: 9px 11px; gap: 8px; border-radius: 13px; }
+    .hero-showcase-address { font-size: 12px; }
+    .hero-showcase-slogan { font-size: 11px; }
+    .hero-showcase-btn { padding: 6px 11px; font-size: 11.5px; }
 
     .bento { grid-template-columns: 1fr; }
     .span2, .row2 { grid-column: auto; grid-row: auto; }
@@ -681,8 +713,8 @@
         </div>
       </a>
 
-      <!-- Десктопная навигация: выверенное капсульное меню без переносов строк -->
-      <nav class="nav-desktop">
+      <!-- Десктопная навигация: капсульное меню -->
+      <nav class="hdr-nav">
         <a class="nav-a" href="#services">Услуги и цены</a>
         <a class="nav-a" href="#about">О клинике</a>
         <a class="nav-a" href="#doctors">Врачи</a>
@@ -697,7 +729,7 @@
           <span class="dot-pulse-wrap" style="width:8px; height:8px"><span class="dot-core" style="width:6px; height:6px"></span><span class="dot-ring"></span></span>
           <span>+7 707 360 6049</span>
         </a>
-        <a class="btn btn-primary hdr-btn nav-desktop" href="#form">Записаться</a>
+        <a class="btn btn-primary hdr-cta" href="#form">Записаться</a>
 
         <!-- Мобильная кнопка меню (гамбургер) -->
         <button class="burger-btn" onClick="{{ onToggleMenu }}" aria-label="Открыть мобильное меню">
@@ -805,119 +837,96 @@
 
   <!-- Hero секция -->
   <section id="top" class="hero">
-    <div class="wrap hero-wrap">
-      <div class="hero-content">
-        <div data-anim="" class="hero-eyebrow">
-          <span class="dot-pulse-wrap"><span class="dot-core"></span><span class="dot-ring"></span></span>
-          <span>Круглосуточно 24/7 · ул. Гоголя 20, Алматы</span>
-        </div>
-        <h1 data-anim="" class="h1" style="margin:0 0 16px">
-          Стоматология<br />
-          <span style="color:var(--teal)">полного цикла</span><br />
-          <span style="color:var(--ink)">в центре Алматы</span>
-        </h1>
-        <p data-anim="" class="lead" style="max-width:480px; margin-bottom:18px">
-          Имплантация, коронки, брекеты и бережное лечение без боли. Дежурный врач готов принять в любое время суток. Рассрочка Kaspi 0-0-12 и бесплатный первичный осмотр.
-        </p>
+    <!-- Фоновое фото клиники на десктопе (правая половина экрана с неоновым зубом) -->
+    <div class="hero-desktop-bg" aria-hidden="true">
+      <img src="assets/hero-clinic.jpg" alt="Like Clinic — Твой путь к улыбке" />
+    </div>
 
-        <!-- На мобильных: интерактивная флагманская карточка клиники прямо в фокусе внимания -->
-        <div data-anim="" class="hero-card hero-card-mobile">
-          <img class="hero-card-img" src="assets/hero-clinic.jpg" alt="Like Clinic — Твой путь к улыбке на ул. Гоголя 20" />
-          <div class="hero-card-top">
-            <span class="hero-card-badge">
-              <span class="dot-pulse-wrap" style="width:8px; height:8px"><span class="dot-core" style="width:6px; height:6px"></span><span class="dot-ring"></span></span>
-              Приём 24/7 Круглосуточно
-            </span>
-            <span class="hero-card-badge hero-card-badge-rating">
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="#D9A227"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-              4.9 в 2ГИС
-            </span>
-          </div>
-          <div class="hero-card-bottom">
-            <div class="hero-card-address">
-              <span class="hero-card-address-title">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--teal-bright)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
-                ул. Гоголя 20 · ЖК Central Park
-              </span>
-              <span class="hero-card-address-sub">Like Clinic · Твой путь к улыбке</span>
-            </div>
-            <a href="https://2gis.kz/almaty/geo/70000001054098473" target="_blank" rel="noopener" class="hero-card-nav-link">
-              2ГИС
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-            </a>
-          </div>
-        </div>
-
-        <!-- Быстрые плашки преимуществ -->
-        <div data-anim="" class="hero-chips">
-          <span class="chip">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
-            Рассрочка Kaspi 0-0-12
-          </span>
-          <span class="chip">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
-            Консультация 0 ₸
-          </span>
-          <span class="chip">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
-            Врачи со стажем 10+ лет
-          </span>
-        </div>
-
-        <!-- Кнопки действий -->
-        <div data-anim="" style="display:flex; flex-wrap:wrap; gap:12px; margin-bottom:24px">
-          <a class="btn btn-primary" href="#form">Записаться на консультацию</a>
-          <a class="btn btn-light" href="https://wa.me/77073606049">
-            <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-12.4 7.4L3 20.5l1.7-5.4A8.4 8.4 0 1 1 21 11.5Z"/></svg>
-            WhatsApp 24/7
-          </a>
-        </div>
-
-        <!-- Плашка акции месяца -->
-        <a data-anim="" href="#services" class="hero-price" data-service-name="Имплантация">
-          <div style="width:100%; display:flex; align-items:center; justify-content:space-between; gap:10px; margin-bottom:4px">
-            <span class="promo-tag">
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg>
-              Акция месяца
-            </span>
-            <span style="font-size:12.5px; color:var(--teal-dark); font-weight:600">Kaspi 0-0-12</span>
-          </div>
-          <span class="sm" style="width:100%; font-size:14.5px; color:var(--ink); font-weight:600">Зубной имплант под ключ</span>
-          <span style="font-size:24px; font-weight:700; color:var(--teal-dark); letter-spacing:-.02em">130 000 ₸</span>
-          <span style="font-size:15px; color:#6B827E; text-decoration:line-through">150 000 ₸</span>
-          <span style="font-size:12.5px; color:#233935; width:100%; font-weight:500">или ~10 833 ₸/мес без переплат</span>
-        </a>
+    <div class="wrap hero-inner">
+      <div data-anim="" class="hero-eyebrow">
+        <span class="dot-pulse-wrap"><span class="dot-core"></span><span class="dot-ring"></span></span>
+        <span>Круглосуточно 24/7 · ул. Гоголя 20, Алматы</span>
       </div>
 
-      <!-- На десктопе: правая колонка с интерактивной карточкой клиники -->
-      <div class="hero-card-desktop-wrap">
-        <div data-anim="" class="hero-card hero-card-desktop">
-          <img class="hero-card-img" src="assets/hero-clinic.jpg" alt="Вход в Like Clinic на Гоголя 20" />
-          <div class="hero-card-top">
-            <span class="hero-card-badge">
+      <h1 data-anim="" class="h1" style="margin:0 0 16px">
+        Стоматология<br />
+        <span style="color:var(--teal)">полного цикла</span><br />
+        <span style="color:var(--ink)">в центре Алматы</span>
+      </h1>
+
+      <p data-anim="" class="lead" style="max-width:480px; margin-bottom:18px">
+        Имплантация, коронки, брекеты и бережное лечение без боли. Дежурный врач готов принять в любое время суток. Рассрочка Kaspi 0-0-12 и бесплатный первичный осмотр.
+      </p>
+
+      <!-- Интерактивная флагманская визитка клиники на мобильных -->
+      <div data-anim="" class="hero-mobile-showcase">
+        <div class="hero-showcase-card">
+          <img src="assets/hero-clinic.jpg" alt="Like Clinic — Твой путь к улыбке на ул. Гоголя 20" />
+          <div class="hero-showcase-top">
+            <span class="hero-showcase-badge">
               <span class="dot-pulse-wrap" style="width:8px; height:8px"><span class="dot-core" style="width:6px; height:6px"></span><span class="dot-ring"></span></span>
               Приём 24/7 Круглосуточно
             </span>
-            <span class="hero-card-badge hero-card-badge-rating">
+            <span class="hero-showcase-badge hero-showcase-badge-rating">
               <svg width="13" height="13" viewBox="0 0 24 24" fill="#D9A227"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
               4.9 в 2ГИС · 350+ отзывов
             </span>
           </div>
-          <div class="hero-card-bottom">
-            <div class="hero-card-address">
-              <span class="hero-card-address-title">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--teal-bright)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+          <div class="hero-showcase-bottom">
+            <div class="hero-showcase-loc">
+              <span class="hero-showcase-address">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--teal-bright)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
                 ул. Гоголя 20 · ЖК Central Park Residence
               </span>
-              <span class="hero-card-address-sub">Like Clinic — Твой путь к улыбке · 2 этаж</span>
+              <span class="hero-showcase-slogan">Like Clinic — Твой путь к улыбке · 2 этаж</span>
             </div>
-            <a href="https://2gis.kz/almaty/geo/70000001054098473" target="_blank" rel="noopener" class="hero-card-nav-link">
-              Открыть в 2ГИС
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            <a href="https://2gis.kz/almaty/geo/70000001054098473" target="_blank" rel="noopener" class="hero-showcase-btn">
+              В 2ГИС
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
             </a>
           </div>
         </div>
       </div>
+
+      <!-- Быстрые плашки преимуществ -->
+      <div data-anim="" class="hero-chips">
+        <span class="chip">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+          Рассрочка Kaspi 0-0-12
+        </span>
+        <span class="chip">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+          Консультация 0 ₸
+        </span>
+        <span class="chip">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+          Врачи со стажем 10+ лет
+        </span>
+      </div>
+
+      <!-- Кнопки действий -->
+      <div data-anim="" style="display:flex; flex-wrap:wrap; gap:12px; margin-bottom:24px">
+        <a class="btn btn-primary" href="#form">Записаться на консультацию</a>
+        <a class="btn btn-light" href="https://wa.me/77073606049">
+          <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-12.4 7.4L3 20.5l1.7-5.4A8.4 8.4 0 1 1 21 11.5Z"/></svg>
+          WhatsApp 24/7
+        </a>
+      </div>
+
+      <!-- Плашка акции месяца -->
+      <a data-anim="" href="#services" class="hero-price" data-service-name="Имплантация">
+        <div style="width:100%; display:flex; align-items:center; justify-content:space-between; gap:10px; margin-bottom:4px">
+          <span class="promo-tag">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg>
+            Акция месяца
+          </span>
+          <span style="font-size:12.5px; color:var(--teal-dark); font-weight:600">Kaspi 0-0-12</span>
+        </div>
+        <span class="sm" style="width:100%; font-size:14.5px; color:var(--ink); font-weight:600">Зубной имплант под ключ</span>
+        <span style="font-size:24px; font-weight:700; color:var(--teal-dark); letter-spacing:-.02em">130 000 ₸</span>
+        <span style="font-size:15px; color:#6B827E; text-decoration:line-through">150 000 ₸</span>
+        <span style="font-size:12.5px; color:#233935; width:100%; font-weight:500">или ~10 833 ₸/мес без переплат</span>
+      </a>
     </div>
   </section>
 
