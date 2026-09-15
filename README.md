@@ -53,8 +53,8 @@ like-clinic-landing/
 │   ├── doctor-sardor.jpg             # Фото ортопеда/хирурга
 │   ├── doctor-zhasurbek.jpg          # Фото терапевта/детского врача
 │   ├── hero-clinic.jpg               # Входная группа клиники на Гоголя 20
-│   ├── interior-1.jpg                # Интерьер кабинета
-│   ├── interior-2.jpg                # Зона ожидания и ресепшен
+│   ├── interior-cabinet.png          # Фото лечебного кабинета с логотипом
+│   ├── interior-equipment.png        # Фото стоматологического оборудования
 │   └── logo.png                      # Фирменный логотип Like Clinic
 ├── design-system/
 │   └── like-clinic-almaty/
